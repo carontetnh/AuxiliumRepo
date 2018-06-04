@@ -1,0 +1,130 @@
+﻿@model RegisterViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+@section scripts{
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+
+}
+<div class="row">
+    <div class="col-md-6">
+        <div class="center-block">
+            <img src="~/img/mainlogl.jpg" />
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h2>Registrarte</h2>
+        <form method="post" asp-action="Register" asp-controller="Account">
+            <div asp-validation-summary="ModelOnly" id="registerErrors"></div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input asp-for="FirstName" class="form-control" placeholder="Nombre" />
+                        <span asp-validation-for="FirstName" class="text-warning"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input asp-for="LastName" class="form-control" placeholder="Apellidos" />
+                        <span asp-validation-for="LastName" class="text-warning"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <input asp-for="Email" class="form-control" placeholder="Correo electrónico" />
+                        <span asp-validation-for="Email" class="text-warning"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <input asp-for="NewPassword" type="password" class="form-control" placeholder="Contraseña nueva" />
+                        <span asp-validation-for="NewPassword" class="text-warning"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="radio-inline"><input type="radio" name="optradio" asp-for="Genre" value="Mujer">Mujer</label>
+                        <label class="radio-inline"><input type="radio" name="optradio" asp-for="Genre" value="Hombre">Hombre</label>
+                        <span asp-validation-for="Genre" class="text-warning"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class='col-md-6'>
+                    <div class="form-group">
+                        <label asp-for="Birthday">Fecha de nacimiento:</label>
+                        <div class='input-group date'>
+                            <input type='text' class="form-control datetimepicker" asp-for="Birthday"/>
+                            <span class="input-group-addon datetimepicker-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    $(function () {
+                        $('.datetimepicker').datetimepicker();
+
+                        $('.datetimepicker-addon').on('click', function () {
+                            $(this).prev('input.datetimepicker').data('DateTimePicker').toggle();
+                        });
+                    });
+                </script>
+                <div class='col-md-6'>
+                    <br />
+                    <a data-toggle="modal" data-target="#bdayModal">
+                        ¿Por qué tengo que facilitar mi fecha de nacimiento?
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-9">
+                    Al hacer clic en "Crear cuenta", aceptas las Condiciones y confirmas que leíste nuestra Política de datos, incluido el uso de cookies. Es posible que recibas notificaciones por SMS de Facebook, que puedes desactivar en cualquier momento.
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="submit" value="Crear cuenta" class="btn btn-success" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal fade" id="bdayModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">¿Por qué tengo que facilitar mi fecha de nacimiento?</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        Proporcionar tu fecha de nacimiento te ayuda a asegurarte de obtener una experiencia en Auxilium adecuada a tu edad. Si quieres cambiar quién lo ve, ve a la sección "Información" de tu perfil. Para obtener más detalles, visita nuestra Política de datos.
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="text-center">Copyright 2018 Auxilium</div>
+            </div>
+        </div>
+    </div>
+</div>

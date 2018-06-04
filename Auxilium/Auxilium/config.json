@@ -1,0 +1,16 @@
+﻿{
+    "ConnectionStrings": {
+        "AuxiliumConnectionString": "server=AQUERONTE\\SQLEXPRESS01;Database=AuxiliumDb;Integrated Security=true;MultipleActiveResultSets=true;"
+    },
+    "Logging": {
+        "LogLevel": {
+            "Default": "Information",
+            "Microsoft": "Warning"
+        }
+    },
+    "Tokens": {
+        "Key": "a;lkjasdf;lkajsd;flkjas ;dflkja sd",
+        "Issuer": "localhost",
+        "Audience": "localhost"
+    }
+}

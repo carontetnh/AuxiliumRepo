@@ -10,7 +10,34 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '214684912675284',
+                autoLogAppEvents: true,
+                xfbml: true,
+                version: 'v3.0'
+            });
+        };
 
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <div id="fb-root"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0&appId=214684912675284&autoLogAppEvents=1';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
 
@@ -69,7 +96,7 @@
                     <div class="form-group">
                         <label asp-for="Birthday">Fecha de nacimiento:</label>
                         <div class='input-group date'>
-                            <input type='text' class="form-control datetimepicker" asp-for="Birthday"/>
+                            <input type='text' class="form-control datetimepicker" asp-for="Birthday" />
                             <span class="input-group-addon datetimepicker-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
@@ -106,6 +133,15 @@
                 </div>
             </div>
         </form>
+        <div class="row">
+            <div class="col-md-12">
+                <hr class="style1">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-3"><div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div></div>
+        </div>
     </div>
 </div>
 <div class="modal fade" id="bdayModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

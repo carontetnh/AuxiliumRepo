@@ -123,6 +123,44 @@ namespace Auxilium.Controllers
             return RedirectToAction("Login", "Account");
         }
 
+        [HttpPost]
+        public async Task<IActionResult> LoginWithFacebook(string FacebookId, string FirstName, string LastName, string Name)
+        {
+            if (FacebookId != null && Name != null && FirstName != null && LastName != null)
+            {
+                _ctx.Database.EnsureCreated();
+
+                var user = await _userManager.FindByNameAsync(Name);
+
+                if (user == null)
+                {
+                    user = new Member()
+                    {
+                        UserName = Name,
+                        FacebookId = FacebookId,
+                        Profile = new Profile()
+                        {
+                            FirstName = FirstName,
+                            LastName = LastName,
+                        }
+                    };
+
+
+                    var results = await _userManager.CreateAsync(user);
+
+                    if (results != IdentityResult.Success)
+                    {
+                        ModelState.AddModelError("", "Failed to create default user");
+                        return RedirectToAction("Login", "Account");
+                    }
+                }
+
+                return RedirectToAction("Match", "App");
+            }
+
+            return RedirectToAction("Login", "Account");
+        }
+
         [HttpGet]
         public async Task<IActionResult> Logout()
         {

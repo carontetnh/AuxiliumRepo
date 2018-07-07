@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Auxilium.Migrations
 {
-    public partial class InitialDb : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -33,6 +33,8 @@ namespace Auxilium.Migrations
                     Birthdate = table.Column<DateTime>(nullable: false),
                     CityTown = table.Column<string>(nullable: true),
                     Country = table.Column<string>(nullable: true),
+                    Gender = table.Column<string>(nullable: true),
+                    Orientation = table.Column<string>(nullable: true),
                     PostalCode = table.Column<string>(nullable: true),
                     StateProvince = table.Column<string>(nullable: true)
                 },
@@ -110,6 +112,7 @@ namespace Auxilium.Migrations
                     Created = table.Column<DateTime>(nullable: false),
                     Email = table.Column<string>(maxLength: 256, nullable: true),
                     EmailConfirmed = table.Column<bool>(nullable: false),
+                    FacebookId = table.Column<string>(nullable: true),
                     LastLogin = table.Column<DateTime>(nullable: false),
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),

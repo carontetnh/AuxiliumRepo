@@ -22,7 +22,28 @@
             // for FB.getLoginStatus().
             if (response.status === 'connected') {
                 // Logged into your app and Facebook.
-            } else {
+
+                FB.api(
+                    "/me", 'get', { fields: 'last_name,first_name,email,name' },
+                    function (resp) {
+                        if (resp && !resp.error) {
+                            var data = {
+                                Mail: resp.email,
+                                FirstName: resp.first_name,
+                                LastName: resp.last_name,
+                                Name: resp.name,
+                            };
+                            $.ajax({
+                                url: "/Account/LoginWithFacebook",
+                                type: "POST",
+                                dataType: "json",
+                                data: JSON.stringify(data)
+                            });
+                            return false;
+                        }
+                    });
+            }
+            else {
                 // The person is not logged into your app or we are unable to tell.
             }
         }

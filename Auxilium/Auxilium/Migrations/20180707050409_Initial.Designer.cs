@@ -11,8 +11,8 @@ using System;
 namespace Auxilium.Migrations
 {
     [DbContext(typeof(AuxContext))]
-    [Migration("20180304011059_InitialDb")]
-    partial class InitialDb
+    [Migration("20180707050409_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,6 +33,10 @@ namespace Auxilium.Migrations
                     b.Property<string>("CityTown");
 
                     b.Property<string>("Country");
+
+                    b.Property<string>("Gender");
+
+                    b.Property<string>("Orientation");
 
                     b.Property<string>("PostalCode");
 
@@ -109,6 +113,8 @@ namespace Auxilium.Migrations
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed");
+
+                    b.Property<string>("FacebookId");
 
                     b.Property<DateTime>("LastLogin");
 

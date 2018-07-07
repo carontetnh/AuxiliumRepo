@@ -33,6 +33,10 @@ namespace Auxilium.Migrations
 
                     b.Property<string>("Country");
 
+                    b.Property<string>("Gender");
+
+                    b.Property<string>("Orientation");
+
                     b.Property<string>("PostalCode");
 
                     b.Property<string>("StateProvince");
@@ -108,6 +112,8 @@ namespace Auxilium.Migrations
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed");
+
+                    b.Property<string>("FacebookId");
 
                     b.Property<DateTime>("LastLogin");
 

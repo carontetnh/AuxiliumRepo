@@ -9,6 +9,7 @@ namespace Auxilium.Data.Entities
     public class Member : IdentityUser
     {
         //Asp.net to Authentication & Authorization
+        public string FacebookId { get; set; }
         public DateTime LastLogin { get; set; }
         public DateTime Created { get; set; }
 

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using Microsoft.AspNetCore.Identity;
 
 namespace Auxilium.Data.Entities
 {
+    [NotMapped]
     public class Member : IdentityUser
     {
         //Asp.net to Authentication & Authorization
